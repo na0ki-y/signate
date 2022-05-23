@@ -32,12 +32,15 @@ def make_XY(train,test):
 def plot_XY():
     pass
 
-def labelencodeing():
+def labelencodeing(train,test):
     #trainとtestを結合
     data=pd.concat([train,test])
     #labelencoding
     feat=data.columns
+    print(data)
+    
     catfeats= list(data.select_dtypes(include= "object").columns) #objectのカラムをリストに入れる
+    print(catfeats)
     le= LabelEncoder() #ラベルエンコーダーをインスタンス化して使えるようにする
     labels={}
     for feat in catfeats: 
@@ -46,8 +49,10 @@ def labelencodeing():
         labels.update(label)
         data[feat]=le.transform(data[feat].astype(str))
     #trainとtestを分割
-    train=data[data['pm25_mid'].notna()]
-    test=data[data['pm25_mid'].isna()]
+    train=data[data[OBJPRM].notna()]#欠損しているか　目的変数が
+    test=data[data[OBJPRM].isna()]
+    test=test.drop([OBJPRM], axis=1)#目的変数が含まれてしまうので除く
+    return train,test,catfeats
 
 def pred_logi(train_X,train_Y,test_X):
     model = LogisticRegression()
@@ -98,6 +103,11 @@ def first_read_plot_pred(dropparms,out_path):
     out_json["INPUT_TEST"]=INPUT_TEST
     out_json["SAMPLE_SUN"]=SAMPLE_SUB
 
+    if out_path=="../result/first_SVM_labelencorde/":
+        train,test,catfeats=labelencodeing(train,test)
+        out_json["catfeats"]=catfeats
+
+
     train_X,train_Y,test_X=make_XY(train,test)
     out_json["OBJPRM"]=OBJPRM
     
@@ -111,9 +121,9 @@ def first_read_plot_pred(dropparms,out_path):
         pred,train_rmse,model=pred_logi(train_X,train_Y,test_X)
         out_json["model_name"]="logosticReg"
         out_json["train_rmse"]=train_rmse
-    elif out_path=="../result/first_SVM_nolabelencorde/":
+    elif out_path=="../result/first_SVM_nolabelencorde/" or out_path=="../result/first_SVM_labelencorde/":
         pred,train_results,model=pred_svm(train_X,train_Y,test_X)
-        out_json["model_name"]="logosticReg"
+        out_json["model_name"]="SVM"
         out_json["train_results"]=train_results
     
     out_json["out_path"]=out_path
@@ -137,7 +147,13 @@ if __name__=="__main__":
     dropparms=["sex","smoker","region"]
     out_path="../result/first_Logi_nolabelencorde/"
     first_read_plot_pred(dropparms,out_path)
+    print("../result/first_Logi_nolabelencorde/")
 
     dropparms=["sex","smoker","region"]
     out_path="../result/first_SVM_nolabelencorde/"
+    first_read_plot_pred(dropparms,out_path)
+    print("../result/first_SVM_nolabelencorde/")
+
+    dropparms=None
+    out_path="../result/first_SVM_labelencorde/"
     first_read_plot_pred(dropparms,out_path)
