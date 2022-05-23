@@ -37,8 +37,6 @@ def labelencodeing(train,test):
     data=pd.concat([train,test])
     #labelencoding
     feat=data.columns
-    print(data)
-    
     catfeats= list(data.select_dtypes(include= "object").columns) #objectのカラムをリストに入れる
     print(catfeats)
     le= LabelEncoder() #ラベルエンコーダーをインスタンス化して使えるようにする
@@ -49,9 +47,10 @@ def labelencodeing(train,test):
         labels.update(label)
         data[feat]=le.transform(data[feat].astype(str))
     #trainとtestを分割
-    train=data[data[OBJPRM].notna()]#欠損しているか　目的変数が
+    train=data[data[OBJPRM].notna()]#目的変数が欠損しているかで分ける
     test=data[data[OBJPRM].isna()]
-    test=test.drop([OBJPRM], axis=1)#目的変数が含まれてしまうので除く
+    train['charges']=train[OBJPRM].astype('int')#目的変数がfloatになるので
+    test=test.drop([OBJPRM], axis=1)    #目的変数が含まれてしまうので除く
     return train,test,catfeats
 
 def pred_logi(train_X,train_Y,test_X):
