@@ -1,0 +1,19 @@
+{
+    "date": "2022-05-24 08:39:52.092994",
+    "prog_name": "first.py",
+    "INPUT_TRAIN": "../data/train.csv",
+    "INPUT_TEST": "../data/test.csv",
+    "SAMPLE_SUN": "../data/sample_submit.csv",
+    "OBJPRM": "charges",
+    "dropoarms": [
+        "sex",
+        "smoker",
+        "region"
+    ],
+    "model_name": "SVM",
+    "train_results": {
+        "co_matrix": "[[893  46  46]\n [109  12   2]\n [ 73   5  14]]",
+        "acc": 0.7658333333333334
+    },
+    "out_path": "../result/first_SVM_nolabelencorde/"
+}

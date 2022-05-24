@@ -1,0 +1,16 @@
+{
+    "date": "2022-05-24 08:39:52.074557",
+    "prog_name": "first.py",
+    "INPUT_TRAIN": "../data/train.csv",
+    "INPUT_TEST": "../data/test.csv",
+    "SAMPLE_SUN": "../data/sample_submit.csv",
+    "OBJPRM": "charges",
+    "dropoarms": [
+        "sex",
+        "smoker",
+        "region"
+    ],
+    "model_name": "logosticReg",
+    "train_rmse": 0.6140706112834246,
+    "out_path": "../result/first_Logi_nolabelencorde/"
+}

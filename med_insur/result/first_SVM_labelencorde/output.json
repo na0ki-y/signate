@@ -1,0 +1,19 @@
+{
+    "date": "2022-05-24 08:39:52.390678",
+    "prog_name": "first.py",
+    "INPUT_TRAIN": "../data/train.csv",
+    "INPUT_TEST": "../data/test.csv",
+    "SAMPLE_SUN": "../data/sample_submit.csv",
+    "catfeats": [
+        "sex",
+        "smoker",
+        "region"
+    ],
+    "OBJPRM": "charges",
+    "model_name": "SVM",
+    "train_results": {
+        "co_matrix": "[[960  10  15]\n [ 39  23  61]\n [  1   0  91]]",
+        "acc": 0.895
+    },
+    "out_path": "../result/first_SVM_labelencorde/"
+}
