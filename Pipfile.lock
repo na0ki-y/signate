@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "cce1995b86ceac6f71b9bedb73ca68b79bfd89e7b10f8d908fd227e24d975ccc"
+            "sha256": "ac1c21e4e3480b873a5ed78758f9c9ce1b026936b8e26731632d2eb590260171"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -96,6 +96,17 @@
             "markers": "python_version >= '3.7'",
             "version": "==1.4.2"
         },
+        "lightgbm": {
+            "hashes": [
+                "sha256:2e94bd1b3ab29d173102c9c1d80db2e27ad7e43b8ff5a74c5cb7984b37d19f45",
+                "sha256:5d25d16e77c844c297ece2044df57651139bc3c8ad8c4108916374267ac68b64",
+                "sha256:8e788c56853316fc5d35db726d81bd002c721038c856853952287f68082e0158",
+                "sha256:e4f1529cad416066964f9af0efad208787861e9f2181b7f9ee7fc9bacc082d4f",
+                "sha256:f4cba3b4f29336ad7e801cb32d9b948ea4cc5300dda650b78bcdfe36b3e2c4b2"
+            ],
+            "index": "pypi",
+            "version": "==3.3.2"
+        },
         "matplotlib": {
             "hashes": [
                 "sha256:03bbb3f5f78836855e127b5dab228d99551ad0642918ccbf3067fcd52ac7ac5e",
@@ -162,7 +173,7 @@
                 "sha256:f3eb268dbd5cfaffd9448113539e44e2dd1c5ca9ce25576f7c04a5453edc26fa",
                 "sha256:fb7a980c81dd932381f8228a426df8aeb70d59bbcda2af075b627bbc50207cba"
             ],
-            "markers": "python_version < '3.10' and platform_machine == 'arm64'",
+            "markers": "python_version >= '3.8'",
             "version": "==1.22.4"
         },
         "opencv-python": {
